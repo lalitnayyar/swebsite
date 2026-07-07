@@ -237,6 +237,11 @@ cmd_pull() {
       echo "Stash pop resulted in conflicts. Resolve manually, then run: git status" >&2
       exit 1
     fi
+
+    if git -C "$ROOT_DIR" status --porcelain | grep -q "^ M scripts/manage.sh$"; then
+      echo "Note: local changes would modify scripts/manage.sh. Restoring it from the latest version." >&2
+      git -C "$ROOT_DIR" restore --source=HEAD -- scripts/manage.sh
+    fi
   fi
 
   echo "Pull complete."
