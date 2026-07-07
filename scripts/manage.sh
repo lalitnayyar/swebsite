@@ -218,13 +218,19 @@ cmd_pull() {
     exit 1
   fi
 
-  local dirty
-  dirty="$(git -C "$ROOT_DIR" status --porcelain)"
+  if [[ "${KEEP_LOCAL_MANAGE_SH:-0}" != "1" ]]; then
+    if [[ -n "$(git -C "$ROOT_DIR" status --porcelain -- scripts/manage.sh)" ]]; then
+      git -C "$ROOT_DIR" restore --source=HEAD -- scripts/manage.sh
+    fi
+  fi
+
+  local dirty_other
+  dirty_other="$(git -C "$ROOT_DIR" status --porcelain -- . ':!scripts/manage.sh')"
 
   local stashed="false"
-  if [[ -n "$dirty" ]]; then
+  if [[ -n "$dirty_other" ]]; then
     echo "Working tree has local changes. Auto-stashing before pull..."
-    git -C "$ROOT_DIR" stash push -u -m "manage.sh auto-stash"
+    git -C "$ROOT_DIR" stash push -u -- ':!scripts/manage.sh' -m "manage.sh auto-stash"
     stashed="true"
   fi
 
@@ -237,8 +243,10 @@ cmd_pull() {
       echo "Stash pop resulted in conflicts. Resolve manually, then run: git status" >&2
       exit 1
     fi
+  fi
 
-    if git -C "$ROOT_DIR" status --porcelain | grep -q "^ M scripts/manage.sh$"; then
+  if [[ "${KEEP_LOCAL_MANAGE_SH:-0}" != "1" ]]; then
+    if [[ -n "$(git -C "$ROOT_DIR" status --porcelain -- scripts/manage.sh)" ]]; then
       echo "Note: local changes would modify scripts/manage.sh. Restoring it from the latest version." >&2
       git -C "$ROOT_DIR" restore --source=HEAD -- scripts/manage.sh
     fi
