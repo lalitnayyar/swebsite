@@ -1,5 +1,6 @@
 import { SiteHeader } from '@/components/layout/site-header';
 import { SiteFooter } from '@/components/layout/site-footer';
+import { siteConfig } from '@/config/site';
 
 export default function AboutPage() {
   return (
@@ -25,6 +26,35 @@ export default function AboutPage() {
               To become one of the world&apos;s most trusted Enterprise AI and Digital Transformation consulting
               firms.
             </p>
+          </div>
+          <div className="rounded-2xl border bg-background p-6 shadow-soft">
+            <div className="text-sm font-semibold">Connect</div>
+            <div className="mt-2 flex gap-4 text-sm">
+              <a
+                href={siteConfig.links.linkedin}
+                className="text-muted-foreground hover:text-foreground"
+                rel="noreferrer"
+                target="_blank"
+              >
+                LinkedIn
+              </a>
+              <a
+                href={siteConfig.links.github}
+                className="text-muted-foreground hover:text-foreground"
+                rel="noreferrer"
+                target="_blank"
+              >
+                GitHub
+              </a>
+              <a
+                href={siteConfig.links.youtube}
+                className="text-muted-foreground hover:text-foreground"
+                rel="noreferrer"
+                target="_blank"
+              >
+                YouTube
+              </a>
+            </div>
           </div>
         </div>
       </main>

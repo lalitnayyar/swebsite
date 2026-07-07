@@ -5,8 +5,8 @@ export const siteConfig = {
     'Enterprise AI consulting and digital transformation partner helping organizations modernize through Generative AI, automation, enterprise architecture, and contact center innovation.',
   url: process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000',
   links: {
-    linkedin: 'https://www.linkedin.com/',
-    github: 'https://github.com/',
-    youtube: 'https://www.youtube.com/'
+    linkedin: 'https://www.linkedin.com/in/lnayyar/',
+    github: 'https://github.com/lalitnayyar',
+    youtube: 'https://youtube.com'
   }
 } as const;
