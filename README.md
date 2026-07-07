@@ -221,6 +221,12 @@ When prompted, use:
 https://github.com/lalitnayyar/swebsite.git
 ```
 
+Install Docker (Ubuntu/Debian) from the script:
+
+```bash
+bash ./scripts/manage.sh install-docker
+```
+
 Examples:
 
 ```bash

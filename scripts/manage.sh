@@ -57,6 +57,7 @@ Commands:
   logs        Follow logs
   patch       Pull latest code + rebuild + restart
   set-remote  Configure git remote origin
+  install-docker  Install Docker (Ubuntu/Debian) in one shot
 
 Options:
   --mode      dev or prod (default: dev)
@@ -226,6 +227,41 @@ cmd_set_remote() {
   echo "Configured origin: $(git -C "$ROOT_DIR" remote get-url origin)"
 }
 
+cmd_install_docker() {
+  if command -v docker >/dev/null 2>&1; then
+    echo "Docker is already installed: $(docker --version)"
+    return
+  fi
+
+  if ! command -v sudo >/dev/null 2>&1; then
+    echo "sudo is required to install Docker but was not found." >&2
+    exit 1
+  fi
+
+  echo "This will install Docker using apt (Ubuntu/Debian):"
+  echo "  - docker.io"
+  echo "  - docker-compose-plugin"
+  echo "And enable/start the docker service."
+  echo ""
+  read -r -p "Proceed? (y/N): " confirm
+  if [[ "${confirm}" != "y" && "${confirm}" != "Y" ]]; then
+    echo "Cancelled."
+    return
+  fi
+
+  sudo apt update
+  sudo apt install -y docker.io docker-compose-plugin
+  sudo systemctl enable --now docker
+
+  echo ""
+  echo "Installed: $(docker --version 2>/dev/null || true)"
+  echo "Compose: $(docker compose version 2>/dev/null || true)"
+  echo ""
+  echo "Optional (recommended): allow running docker without sudo:"
+  echo "  sudo usermod -aG docker \$USER"
+  echo "  newgrp docker"
+}
+
 menu() {
   local mode="$1"
   local branch="$2"
@@ -246,6 +282,7 @@ menu() {
     echo "9) Switch mode (dev/prod)"
     echo "10) Switch branch"
     echo "11) Set git remote (origin)"
+    echo "12) Install Docker (Ubuntu/Debian)"
     echo "0) Exit"
     echo ""
 
@@ -280,6 +317,9 @@ menu() {
         ;;
       11)
         cmd_set_remote
+        ;;
+      12)
+        cmd_install_docker
         ;;
       0) exit 0 ;;
       *)
@@ -338,6 +378,9 @@ main() {
       ;;
     set-remote)
       cmd_set_remote
+      ;;
+    install-docker)
+      cmd_install_docker
       ;;
     *)
       echo "Unknown command: ${command}" >&2
