@@ -5,15 +5,34 @@ APP_NAME="sts-website"
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 DEFAULT_BRANCH="main"
 
+docker_compose_cmd() {
+  if command -v docker >/dev/null 2>&1 && docker compose version >/dev/null 2>&1; then
+    echo "docker compose"
+    return
+  fi
+  if command -v docker-compose >/dev/null 2>&1; then
+    echo "docker-compose"
+    return
+  fi
+  echo ""
+}
+
 compose() {
   local mode="$1"; shift
 
+  local dc
+  dc="$(docker_compose_cmd)"
+  if [[ -z "$dc" ]]; then
+    echo "Docker Compose is required but was not found (docker compose or docker-compose)." >&2
+    exit 1
+  fi
+
   case "$mode" in
     dev)
-      docker compose -f "${ROOT_DIR}/docker-compose.yml" "$@"
+      $dc -f "${ROOT_DIR}/docker-compose.yml" "$@"
       ;;
     prod)
-      docker compose -f "${ROOT_DIR}/docker-compose.prod.yml" "$@"
+      $dc -f "${ROOT_DIR}/docker-compose.prod.yml" "$@"
       ;;
     *)
       echo "Unknown mode: ${mode} (expected dev|prod)" >&2
@@ -267,16 +286,34 @@ cmd_install_docker() {
   fi
 
   sudo apt update
-  sudo apt install -y docker.io docker-compose-plugin
+
+  echo "Installing docker.io..."
+  sudo apt install -y docker.io
+
+  echo "Attempting to install Docker Compose v2 plugin (docker-compose-plugin)..."
+  if sudo apt install -y docker-compose-plugin; then
+    echo "Installed docker-compose-plugin."
+  else
+    echo ""
+    echo "docker-compose-plugin package not found in this apt repository." >&2
+    echo "Falling back to docker-compose (legacy) package." >&2
+    sudo apt install -y docker-compose
+  fi
+
   sudo systemctl enable --now docker
 
   echo ""
   echo "Installed: $(docker --version 2>/dev/null || true)"
-  echo "Compose: $(docker compose version 2>/dev/null || true)"
+  echo "Compose v2 (docker compose): $(docker compose version 2>/dev/null || echo 'not available')"
+  echo "Compose v1 (docker-compose): $(docker-compose --version 2>/dev/null || echo 'not available')"
   echo ""
   echo "Optional (recommended): allow running docker without sudo:"
   echo "  sudo usermod -aG docker \$USER"
   echo "  newgrp docker"
+
+  echo ""
+  echo "If you specifically need Compose v2 on Ubuntu, install Docker from the official Docker repo (docker-ce)"
+  echo "which provides docker-compose-plugin consistently."
 }
 
 menu() {
