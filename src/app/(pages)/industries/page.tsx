@@ -1,5 +1,6 @@
 import { SiteHeader } from '@/components/layout/site-header';
 import { SiteFooter } from '@/components/layout/site-footer';
+import { Reveal } from '@/components/motion/reveal';
 
 const industries = [
   'Telecommunications',
@@ -30,12 +31,14 @@ export default function IndustriesPage() {
           </div>
           <div className="grid gap-4 md:grid-cols-2">
             {industries.map((i) => (
-              <div key={i} className="rounded-2xl border bg-background p-6 shadow-soft">
-                <div className="text-sm font-semibold">{i}</div>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  Engagement approach tailored to operational constraints and regulatory environment.
-                </p>
-              </div>
+              <Reveal key={i}>
+                <div className="rounded-2xl border bg-background p-6 shadow-soft transition-all hover:-translate-y-0.5 hover:shadow-glass">
+                  <div className="text-sm font-semibold">{i}</div>
+                  <p className="mt-2 text-sm text-muted-foreground">
+                    Engagement approach tailored to operational constraints and regulatory environment.
+                  </p>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>

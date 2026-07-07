@@ -1,5 +1,6 @@
 import { SiteHeader } from '@/components/layout/site-header';
 import { SiteFooter } from '@/components/layout/site-footer';
+import { Reveal } from '@/components/motion/reveal';
 
 const services = [
   'Enterprise AI Consulting',
@@ -47,13 +48,15 @@ export default function ServicesPage() {
           </div>
           <div className="grid gap-4 md:grid-cols-2">
             {services.map((s) => (
-              <div key={s} className="rounded-2xl border bg-background p-5 shadow-soft">
-                <div className="text-sm font-semibold">{s}</div>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  Structured consulting engagement with architecture, implementation, and operational
-                  guidance.
-                </p>
-              </div>
+              <Reveal key={s}>
+                <div className="rounded-2xl border bg-background p-5 shadow-soft transition-all hover:-translate-y-0.5 hover:shadow-glass">
+                  <div className="text-sm font-semibold">{s}</div>
+                  <p className="mt-2 text-sm text-muted-foreground">
+                    Structured consulting engagement with architecture, implementation, and operational
+                    guidance.
+                  </p>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
