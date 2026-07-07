@@ -5,6 +5,7 @@ import { SiteHeader } from '@/components/layout/site-header';
 import { SiteFooter } from '@/components/layout/site-footer';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { Reveal } from '@/components/motion/reveal';
 
 const stats = [
   { label: 'Years in enterprise delivery', value: '10+' },
@@ -27,7 +28,7 @@ export default function HomePage() {
 
           <div className="container relative py-16 md:py-24">
             <div className="grid items-center gap-12 lg:grid-cols-2">
-              <div className="space-y-6">
+              <Reveal className="space-y-6">
                 <Badge variant="secondary">Enterprise AI Consulting</Badge>
                 <h1 className="text-balance text-4xl font-semibold tracking-tight md:text-5xl">
                   Engineering Intelligence.
@@ -54,9 +55,9 @@ export default function HomePage() {
                     </div>
                   ))}
                 </div>
-              </div>
+              </Reveal>
 
-              <div className="relative">
+              <Reveal className="relative" delay={0.08}>
                 <div className="absolute -inset-10 rounded-[28px] bg-[linear-gradient(135deg,rgba(37,99,235,0.22),rgba(99,102,241,0.10),rgba(255,255,255,0.0))] blur-2xl" />
                 <div className="relative overflow-hidden rounded-2xl border bg-background/60 shadow-glass backdrop-blur">
                   <div className="p-6">
@@ -86,27 +87,29 @@ export default function HomePage() {
                     </p>
                   </div>
                 </div>
-              </div>
+              </Reveal>
             </div>
 
-            <div className="mt-14 rounded-2xl border bg-background/60 p-6 shadow-soft backdrop-blur">
-              <div className="text-sm font-semibold">Trusted technology ecosystems</div>
-              <div className="mt-4 grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-6">
-                {logos.map((l) => (
-                  <div
-                    key={l}
-                    className="flex h-10 items-center justify-center rounded-lg border bg-background/40 text-sm text-muted-foreground"
-                  >
-                    {l}
-                  </div>
-                ))}
+            <Reveal delay={0.12}>
+              <div className="mt-14 rounded-2xl border bg-background/60 p-6 shadow-soft backdrop-blur">
+                <div className="text-sm font-semibold">Trusted technology ecosystems</div>
+                <div className="mt-4 grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-6">
+                  {logos.map((l) => (
+                    <div
+                      key={l}
+                      className="flex h-10 items-center justify-center rounded-lg border bg-background/40 text-sm text-muted-foreground"
+                    >
+                      {l}
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
+            </Reveal>
           </div>
         </section>
 
         <section className="container py-16">
-          <div className="grid gap-10 lg:grid-cols-3">
+          <Reveal className="grid gap-10 lg:grid-cols-3">
             <div className="lg:col-span-1">
               <h2 className="text-2xl font-semibold tracking-tight">What we deliver</h2>
               <p className="mt-2 text-sm text-muted-foreground">
@@ -142,7 +145,7 @@ export default function HomePage() {
                 </div>
               ))}
             </div>
-          </div>
+          </Reveal>
         </section>
 
         <section className="border-y bg-muted/20">

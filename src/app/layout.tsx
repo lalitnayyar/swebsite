@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 
 import { ThemeProvider } from '@/components/theme/theme-provider';
 import { ChatWidget } from '@/components/ai/chat-widget';
+import { PageTransition } from '@/components/motion/page-transition';
 import { siteConfig } from '@/config/site';
 
 import './globals.css';
@@ -40,7 +41,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" suppressHydrationWarning>
       <body>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          {children}
+          <PageTransition>{children}</PageTransition>
           <ChatWidget />
         </ThemeProvider>
       </body>
