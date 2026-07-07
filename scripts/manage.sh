@@ -4,6 +4,7 @@ set -euo pipefail
 APP_NAME="sts-website"
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 DEFAULT_BRANCH="main"
+BIND_IP=""
 
 docker_compose_cmd() {
   if command -v docker >/dev/null 2>&1 && docker compose version >/dev/null 2>&1; then
@@ -17,6 +18,41 @@ docker_compose_cmd() {
   echo ""
 }
 
+compose_override_file() {
+  local mode="$1"
+  local bind_ip="$2"
+
+  if [[ -z "$bind_ip" ]]; then
+    echo ""
+    return
+  fi
+
+  local tmp
+  tmp="$(mktemp -t sts-compose-override.XXXXXX.yml)"
+
+  if [[ "$mode" == "dev" ]]; then
+    cat >"$tmp" <<EOF
+services:
+  web:
+    ports:
+      - "${bind_ip}:3000:3000"
+EOF
+  elif [[ "$mode" == "prod" ]]; then
+    cat >"$tmp" <<EOF
+services:
+  nginx:
+    ports:
+      - "${bind_ip}:80:80"
+EOF
+  else
+    rm -f "$tmp"
+    echo ""
+    return
+  fi
+
+  echo "$tmp"
+}
+
 compose() {
   local mode="$1"; shift
 
@@ -27,12 +63,26 @@ compose() {
     exit 1
   fi
 
+  local override
+  override="$(compose_override_file "$mode" "${BIND_IP}")"
+  if [[ -n "$override" ]]; then
+    trap 'rm -f "$override" 2>/dev/null || true' RETURN
+  fi
+
   case "$mode" in
     dev)
-      $dc -f "${ROOT_DIR}/docker-compose.yml" "$@"
+      if [[ -n "$override" ]]; then
+        $dc -f "${ROOT_DIR}/docker-compose.yml" -f "$override" "$@"
+      else
+        $dc -f "${ROOT_DIR}/docker-compose.yml" "$@"
+      fi
       ;;
     prod)
-      $dc -f "${ROOT_DIR}/docker-compose.prod.yml" "$@"
+      if [[ -n "$override" ]]; then
+        $dc -f "${ROOT_DIR}/docker-compose.prod.yml" -f "$override" "$@"
+      else
+        $dc -f "${ROOT_DIR}/docker-compose.prod.yml" "$@"
+      fi
       ;;
     *)
       echo "Unknown mode: ${mode} (expected dev|prod)" >&2
@@ -80,7 +130,7 @@ splash() {
 usage() {
   cat <<EOF
 Usage:
-  ./scripts/manage.sh [command] [--mode dev|prod]
+  ./scripts/manage.sh [command] [--mode dev|prod] [--bind-ip <ip>]
 
 Commands:
   menu        Interactive menu
@@ -99,6 +149,7 @@ Commands:
 Options:
   --mode      dev or prod (default: dev)
   --branch    Git branch to pull during patch (default: main)
+  --bind-ip   Host IP to bind published ports to (example: 127.0.0.1 or 100.104.22.51). Empty means 0.0.0.0
 
 Examples:
   ./scripts/manage.sh menu
@@ -117,6 +168,9 @@ parse_mode() {
         shift 2
         ;;
       --branch)
+        shift 2
+        ;;
+      --bind-ip)
         shift 2
         ;;
       *)
@@ -140,6 +194,9 @@ parse_branch() {
       --mode)
         shift 2
         ;;
+      --bind-ip)
+        shift 2
+        ;;
       *)
         shift
         ;;
@@ -147,6 +204,30 @@ parse_branch() {
   done
 
   echo "$branch"
+}
+
+parse_bind_ip() {
+  local bind_ip=""
+
+  while [[ $# -gt 0 ]]; do
+    case "$1" in
+      --bind-ip)
+        bind_ip="$2"
+        shift 2
+        ;;
+      --mode)
+        shift 2
+        ;;
+      --branch)
+        shift 2
+        ;;
+      *)
+        shift
+        ;;
+    esac
+  done
+
+  echo "$bind_ip"
 }
 
 cmd_deploy() {
@@ -381,6 +462,7 @@ menu() {
     print_header
     echo "Mode: ${mode}"
     echo "Branch: ${branch}"
+    echo "Bind IP: ${BIND_IP:-0.0.0.0}"
     echo ""
     echo "1) Deploy (build + start)"
     echo "2) Start"
@@ -395,6 +477,7 @@ menu() {
     echo "11) Set git remote (origin)"
     echo "12) Install Docker (Ubuntu/Debian)"
     echo "13) Pull latest code (auto-stash + rebase + pop)"
+    echo "14) Set bind IP for ports"
     echo "0) Exit"
     echo ""
 
@@ -436,6 +519,10 @@ menu() {
       13)
         cmd_pull "$branch"
         ;;
+      14)
+        read -r -p "Enter bind IP (empty for 0.0.0.0): " new_bind
+        BIND_IP="$new_bind"
+        ;;
       0) exit 0 ;;
       *)
         echo "Invalid choice." >&2
@@ -461,6 +548,7 @@ main() {
   mode="$(parse_mode "$@")"
   local branch
   branch="$(parse_branch "$@")"
+  BIND_IP="$(parse_bind_ip "$@")"
 
   case "$command" in
     -h|--help|help)
