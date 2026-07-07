@@ -1,0 +1,24 @@
+[
+  {
+    "slug": "enterprise-rag-platform",
+    "title": "Enterprise RAG Platform",
+    "category": "AI",
+    "tags": ["RAG", "LLM", "Knowledge Management"],
+    "summary": "Designed and delivered a governed retrieval-augmented generation platform for enterprise knowledge access.",
+    "technologyStack": ["Next.js", "Node.js", "Azure", "Vector DB", "Observability"],
+    "demoUrl": "#",
+    "githubUrl": "#",
+    "documentationUrl": "#"
+  },
+  {
+    "slug": "contact-center-ai-analytics",
+    "title": "Contact Center AI Analytics",
+    "category": "Contact Center",
+    "tags": ["Speech Analytics", "Automation", "Reporting"],
+    "summary": "Modernized analytics and QA workflows for a multi-site contact center program.",
+    "technologyStack": ["Python", "Data Pipeline", "Dashboards", "Cloud"],
+    "demoUrl": "#",
+    "githubUrl": "#",
+    "documentationUrl": "#"
+  }
+]
