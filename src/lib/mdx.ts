@@ -32,9 +32,24 @@ export function getBlogPostBySlug(slug: string): BlogPost {
   const file = fs.readFileSync(fullPath, 'utf8');
   const { data, content } = matter(file);
 
+  const rawDate = (data as { date?: unknown }).date;
+  const normalizedDate =
+    rawDate instanceof Date
+      ? rawDate.toISOString().slice(0, 10)
+      : typeof rawDate === 'string'
+        ? rawDate
+        : rawDate != null
+          ? String(rawDate)
+          : '';
+
+  const frontmatter: BlogFrontmatter = {
+    ...(data as Omit<BlogFrontmatter, 'date'>),
+    date: normalizedDate
+  };
+
   return {
     slug,
-    frontmatter: data as BlogFrontmatter,
+    frontmatter,
     content
   };
 }
