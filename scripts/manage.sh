@@ -84,6 +84,7 @@ Usage:
 
 Commands:
   menu        Interactive menu
+  pull        Pull latest code (auto-stash + rebase + pop)
   deploy      Build + start (prod defaults to -d)
   start       Start services
   stop        Stop services
@@ -196,6 +197,49 @@ cmd_logs() {
   local mode="$1"
   ensure_docker
   compose "$mode" logs -f --tail=200
+}
+
+cmd_pull() {
+  local branch="$1"
+
+  if ! command -v git >/dev/null 2>&1; then
+    echo "git is required but not found in PATH." >&2
+    exit 1
+  fi
+
+  if ! git -C "$ROOT_DIR" rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+    echo "This directory is not a git repository: ${ROOT_DIR}" >&2
+    exit 1
+  fi
+
+  if ! git -C "$ROOT_DIR" remote get-url origin >/dev/null 2>&1; then
+    echo "Remote 'origin' is not configured." >&2
+    echo "Run: ./scripts/manage.sh set-remote" >&2
+    exit 1
+  fi
+
+  local dirty
+  dirty="$(git -C "$ROOT_DIR" status --porcelain)"
+
+  local stashed="false"
+  if [[ -n "$dirty" ]]; then
+    echo "Working tree has local changes. Auto-stashing before pull..."
+    git -C "$ROOT_DIR" stash push -u -m "manage.sh auto-stash"
+    stashed="true"
+  fi
+
+  echo "Pulling latest changes (rebase) from origin/${branch}..."
+  git -C "$ROOT_DIR" pull --rebase origin "$branch"
+
+  if [[ "$stashed" == "true" ]]; then
+    echo "Restoring stashed changes..."
+    if ! git -C "$ROOT_DIR" stash pop; then
+      echo "Stash pop resulted in conflicts. Resolve manually, then run: git status" >&2
+      exit 1
+    fi
+  fi
+
+  echo "Pull complete."
 }
 
 cmd_patch() {
@@ -337,6 +381,7 @@ menu() {
     echo "10) Switch branch"
     echo "11) Set git remote (origin)"
     echo "12) Install Docker (Ubuntu/Debian)"
+    echo "13) Pull latest code (auto-stash + rebase + pop)"
     echo "0) Exit"
     echo ""
 
@@ -375,6 +420,9 @@ menu() {
       12)
         cmd_install_docker
         ;;
+      13)
+        cmd_pull "$branch"
+        ;;
       0) exit 0 ;;
       *)
         echo "Invalid choice." >&2
@@ -407,6 +455,9 @@ main() {
       ;;
     menu)
       menu "$mode" "$branch"
+      ;;
+    pull)
+      cmd_pull "$branch"
       ;;
     deploy)
       cmd_deploy "$mode"
