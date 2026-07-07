@@ -1,6 +1,30 @@
+import * as React from 'react';
+
 import { SiteHeader } from '@/components/layout/site-header';
 import { SiteFooter } from '@/components/layout/site-footer';
 import { Reveal } from '@/components/motion/reveal';
+import { TopicCard } from '@/components/marketing/topic-card';
+import {
+  Building2,
+  GraduationCap,
+  HeartPulse,
+  Landmark,
+  Plane,
+  ShieldCheck,
+  ShoppingBag,
+  Signal,
+  Truck,
+  Factory,
+  Fuel,
+  Users
+} from 'lucide-react';
+
+const industryImages = [
+  'https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=1600&q=70',
+  'https://images.unsplash.com/photo-1554224154-26032ffc0d07?auto=format&fit=crop&w=1600&q=70',
+  'https://images.unsplash.com/photo-1581091215367-59ab6b6f7b3f?auto=format&fit=crop&w=1600&q=70',
+  'https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=70'
+];
 
 const industries = [
   'Telecommunications',
@@ -17,6 +41,21 @@ const industries = [
   'Public Sector'
 ];
 
+const industryMeta: Record<string, { icon: React.ElementType; accent: 'blue' | 'indigo' | 'emerald' | 'cyan' }> = {
+  Telecommunications: { icon: Signal, accent: 'cyan' },
+  Government: { icon: Building2, accent: 'indigo' },
+  Healthcare: { icon: HeartPulse, accent: 'emerald' },
+  Banking: { icon: Landmark, accent: 'blue' },
+  Insurance: { icon: ShieldCheck, accent: 'indigo' },
+  Retail: { icon: ShoppingBag, accent: 'cyan' },
+  Manufacturing: { icon: Factory, accent: 'emerald' },
+  Education: { icon: GraduationCap, accent: 'blue' },
+  Energy: { icon: Fuel, accent: 'emerald' },
+  Airlines: { icon: Plane, accent: 'cyan' },
+  Transportation: { icon: Truck, accent: 'blue' },
+  'Public Sector': { icon: Users, accent: 'indigo' }
+};
+
 export default function IndustriesPage() {
   return (
     <div className="min-h-dvh">
@@ -30,14 +69,15 @@ export default function IndustriesPage() {
             </p>
           </div>
           <div className="grid gap-4 md:grid-cols-2">
-            {industries.map((i) => (
+            {industries.map((i, idx) => (
               <Reveal key={i}>
-                <div className="rounded-2xl border bg-background p-6 shadow-soft transition-all hover:-translate-y-0.5 hover:shadow-glass">
-                  <div className="text-sm font-semibold">{i}</div>
-                  <p className="mt-2 text-sm text-muted-foreground">
-                    Engagement approach tailored to operational constraints and regulatory environment.
-                  </p>
-                </div>
+                <TopicCard
+                  title={i}
+                  description="Engagement approach tailored to operational constraints and regulatory environment."
+                  icon={industryMeta[i]?.icon ?? Users}
+                  accent={industryMeta[i]?.accent ?? 'blue'}
+                  imageSrc={industryImages[idx % industryImages.length]}
+                />
               </Reveal>
             ))}
           </div>
