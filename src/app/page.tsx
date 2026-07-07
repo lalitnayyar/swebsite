@@ -6,6 +6,7 @@ import { SiteFooter } from '@/components/layout/site-footer';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Reveal } from '@/components/motion/reveal';
+import { HeroVisual } from '@/components/marketing/hero-visual';
 
 const stats = [
   { label: 'Years in enterprise delivery', value: '10+' },
@@ -59,34 +60,10 @@ export default function HomePage() {
 
               <Reveal className="relative" delay={0.08}>
                 <div className="absolute -inset-10 rounded-[28px] bg-[linear-gradient(135deg,rgba(37,99,235,0.22),rgba(99,102,241,0.10),rgba(255,255,255,0.0))] blur-2xl" />
-                <div className="relative overflow-hidden rounded-2xl border bg-background/60 shadow-glass backdrop-blur">
-                  <div className="p-6">
-                    <div className="text-sm font-medium text-muted-foreground">AI Network Overview</div>
-                    <div className="mt-4 grid grid-cols-3 gap-3">
-                      {Array.from({ length: 9 }).map((_, i) => (
-                        <div
-                          key={i}
-                          className="h-20 rounded-xl border bg-[radial-gradient(600px_circle_at_30%_30%,rgba(37,99,235,0.18),transparent_55%)] shadow-soft"
-                        />
-                      ))}
-                    </div>
-                  </div>
-                  <div className="border-t bg-muted/30 p-6">
-                    <div className="flex items-center justify-between">
-                      <div className="text-sm font-medium">Reference Architecture</div>
-                      <a
-                        href="#"
-                        className="text-sm text-primary underline-offset-4 hover:underline"
-                        aria-label="Architecture diagram placeholder"
-                      >
-                        View diagram
-                      </a>
-                    </div>
-                    <p className="mt-2 text-sm text-muted-foreground">
-                      Secure, governed, and observable AI systems built for enterprise constraints.
-                    </p>
-                  </div>
-                </div>
+                <HeroVisual
+                  imageSrc="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1600&q=80"
+                  imageAlt="Consulting team collaborating"
+                />
               </Reveal>
             </div>
 
