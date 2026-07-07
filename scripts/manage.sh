@@ -41,6 +41,23 @@ print_header() {
   echo ""
 }
 
+splash() {
+  clear || true
+  echo "============================================================="
+  echo " Symbiotic Technology Solutions - Site Management Script"
+  echo "============================================================="
+  echo " Owner: Lalit Nayyar"
+  echo " Email: lalitnayyar@gmail.com"
+  echo " Phone: +971508320336, +919595353336"
+  echo ""
+  echo " Disclaimer: Use at your own risk. This script can build,"
+  echo " start/stop services, and pull code updates (patch)."
+  echo " Ensure you understand the impact before running production."
+  echo ""
+  echo "Continuing in 5 seconds..."
+  sleep 5
+}
+
 usage() {
   cat <<EOF
 Usage:
@@ -338,6 +355,8 @@ main() {
     usage
     exit 1
   fi
+
+  splash
 
   local command="$1"; shift
   local mode
