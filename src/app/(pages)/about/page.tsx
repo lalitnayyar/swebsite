@@ -22,7 +22,7 @@ export default function AboutPage() {
           <div className="rounded-2xl border bg-background p-6 shadow-soft">
             <div className="text-sm font-semibold">Vision</div>
             <p className="mt-2 text-sm text-muted-foreground">
-              To become one of the world's most trusted Enterprise AI and Digital Transformation consulting
+              To become one of the world&apos;s most trusted Enterprise AI and Digital Transformation consulting
               firms.
             </p>
           </div>
