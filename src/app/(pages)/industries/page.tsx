@@ -4,20 +4,6 @@ import { SiteHeader } from '@/components/layout/site-header';
 import { SiteFooter } from '@/components/layout/site-footer';
 import { Reveal } from '@/components/motion/reveal';
 import { TopicCard } from '@/components/marketing/topic-card';
-import {
-  Building2,
-  GraduationCap,
-  HeartPulse,
-  Landmark,
-  Plane,
-  ShieldCheck,
-  ShoppingBag,
-  Signal,
-  Truck,
-  Factory,
-  Fuel,
-  Users
-} from 'lucide-react';
 
 const industryImages = [
   'https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=1600&q=70',
@@ -41,19 +27,19 @@ const industries = [
   'Public Sector'
 ];
 
-const industryMeta: Record<string, { icon: React.ElementType; accent: 'blue' | 'indigo' | 'emerald' | 'cyan' }> = {
-  Telecommunications: { icon: Signal, accent: 'cyan' },
-  Government: { icon: Building2, accent: 'indigo' },
-  Healthcare: { icon: HeartPulse, accent: 'emerald' },
-  Banking: { icon: Landmark, accent: 'blue' },
-  Insurance: { icon: ShieldCheck, accent: 'indigo' },
-  Retail: { icon: ShoppingBag, accent: 'cyan' },
-  Manufacturing: { icon: Factory, accent: 'emerald' },
-  Education: { icon: GraduationCap, accent: 'blue' },
-  Energy: { icon: Fuel, accent: 'emerald' },
-  Airlines: { icon: Plane, accent: 'cyan' },
-  Transportation: { icon: Truck, accent: 'blue' },
-  'Public Sector': { icon: Users, accent: 'indigo' }
+const industryMeta: Record<string, { iconKey: string; accent: 'blue' | 'indigo' | 'emerald' | 'cyan' }> = {
+  Telecommunications: { iconKey: 'signal', accent: 'cyan' },
+  Government: { iconKey: 'building2', accent: 'indigo' },
+  Healthcare: { iconKey: 'heartPulse', accent: 'emerald' },
+  Banking: { iconKey: 'landmark', accent: 'blue' },
+  Insurance: { iconKey: 'shieldCheck', accent: 'indigo' },
+  Retail: { iconKey: 'shoppingBag', accent: 'cyan' },
+  Manufacturing: { iconKey: 'factory', accent: 'emerald' },
+  Education: { iconKey: 'graduationCap', accent: 'blue' },
+  Energy: { iconKey: 'fuel', accent: 'emerald' },
+  Airlines: { iconKey: 'plane', accent: 'cyan' },
+  Transportation: { iconKey: 'truck', accent: 'blue' },
+  'Public Sector': { iconKey: 'users', accent: 'indigo' }
 };
 
 export default function IndustriesPage() {
@@ -74,7 +60,7 @@ export default function IndustriesPage() {
                 <TopicCard
                   title={i}
                   description="Engagement approach tailored to operational constraints and regulatory environment."
-                  icon={industryMeta[i]?.icon ?? Users}
+                  iconKey={((industryMeta[i]?.iconKey ?? 'users') as any)}
                   accent={industryMeta[i]?.accent ?? 'blue'}
                   imageSrc={industryImages[idx % industryImages.length]}
                 />

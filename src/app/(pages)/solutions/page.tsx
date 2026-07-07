@@ -4,16 +4,6 @@ import { SiteHeader } from '@/components/layout/site-header';
 import { SiteFooter } from '@/components/layout/site-footer';
 import { Reveal } from '@/components/motion/reveal';
 import { TopicCard } from '@/components/marketing/topic-card';
-import {
-  Bot,
-  Database,
-  FileText,
-  LayoutGrid,
-  MessageSquare,
-  Search,
-  Shield,
-  Workflow
-} from 'lucide-react';
 
 const solutions = [
   'Enterprise AI Assistant',
@@ -46,23 +36,23 @@ const solutionImages = [
   'https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=70'
 ];
 
-const solutionMeta: Record<string, { icon: React.ElementType; accent: 'blue' | 'indigo' | 'emerald' | 'cyan' }> = {
-  'Enterprise AI Assistant': { icon: Bot, accent: 'indigo' },
-  'Knowledge Management': { icon: Database, accent: 'blue' },
-  'Customer Support AI': { icon: MessageSquare, accent: 'cyan' },
-  'Call Center AI': { icon: MessageSquare, accent: 'indigo' },
-  'Speech Analytics': { icon: Shield, accent: 'blue' },
-  Chatbots: { icon: Bot, accent: 'cyan' },
-  'Voice Bots': { icon: Bot, accent: 'indigo' },
-  'Document Intelligence': { icon: FileText, accent: 'emerald' },
-  'RAG Systems': { icon: Search, accent: 'blue' },
-  'Multi Agent Systems': { icon: Workflow, accent: 'cyan' },
-  'Workflow Automation': { icon: Workflow, accent: 'emerald' },
-  'Approval Automation': { icon: Workflow, accent: 'indigo' },
-  'Reporting Platform': { icon: LayoutGrid, accent: 'blue' },
-  'AI Dashboards': { icon: LayoutGrid, accent: 'indigo' },
-  'Enterprise Search': { icon: Search, accent: 'cyan' },
-  'Developer Portal': { icon: LayoutGrid, accent: 'blue' }
+const solutionMeta: Record<string, { iconKey: string; accent: 'blue' | 'indigo' | 'emerald' | 'cyan' }> = {
+  'Enterprise AI Assistant': { iconKey: 'bot', accent: 'indigo' },
+  'Knowledge Management': { iconKey: 'database', accent: 'blue' },
+  'Customer Support AI': { iconKey: 'messageSquare', accent: 'cyan' },
+  'Call Center AI': { iconKey: 'messageSquare', accent: 'indigo' },
+  'Speech Analytics': { iconKey: 'shield', accent: 'blue' },
+  Chatbots: { iconKey: 'bot', accent: 'cyan' },
+  'Voice Bots': { iconKey: 'bot', accent: 'indigo' },
+  'Document Intelligence': { iconKey: 'fileText', accent: 'emerald' },
+  'RAG Systems': { iconKey: 'search', accent: 'blue' },
+  'Multi Agent Systems': { iconKey: 'workflow', accent: 'cyan' },
+  'Workflow Automation': { iconKey: 'workflow', accent: 'emerald' },
+  'Approval Automation': { iconKey: 'workflow', accent: 'indigo' },
+  'Reporting Platform': { iconKey: 'layoutGrid', accent: 'blue' },
+  'AI Dashboards': { iconKey: 'layoutGrid', accent: 'indigo' },
+  'Enterprise Search': { iconKey: 'search', accent: 'cyan' },
+  'Developer Portal': { iconKey: 'layoutGrid', accent: 'blue' }
 };
 
 export default function SolutionsPage() {
@@ -83,7 +73,7 @@ export default function SolutionsPage() {
                 <TopicCard
                   title={s}
                   description="Architecture-led implementation with governance, observability, and operational readiness."
-                  icon={solutionMeta[s]?.icon ?? LayoutGrid}
+                  iconKey={((solutionMeta[s]?.iconKey ?? 'layoutGrid') as any)}
                   accent={solutionMeta[s]?.accent ?? 'blue'}
                   imageSrc={solutionImages[idx % solutionImages.length]}
                 />

@@ -3,11 +3,93 @@
 import * as React from 'react';
 import Image from 'next/image';
 import { motion, useReducedMotion } from 'framer-motion';
+import {
+  Bot,
+  Brain,
+  Building2,
+  Cloud,
+  Cog,
+  Contact,
+  Database,
+  Factory,
+  FileText,
+  Fuel,
+  GraduationCap,
+  HeartPulse,
+  Landmark,
+  Layers,
+  LayoutGrid,
+  MessageSquare,
+  Plane,
+  Search,
+  Shield,
+  ShieldCheck,
+  ShoppingBag,
+  Signal,
+  Truck,
+  Users,
+  Workflow
+} from 'lucide-react';
+
+type TopicIconKey =
+  | 'bot'
+  | 'brain'
+  | 'building2'
+  | 'cloud'
+  | 'cog'
+  | 'contact'
+  | 'database'
+  | 'factory'
+  | 'fileText'
+  | 'fuel'
+  | 'graduationCap'
+  | 'heartPulse'
+  | 'landmark'
+  | 'layers'
+  | 'layoutGrid'
+  | 'messageSquare'
+  | 'plane'
+  | 'search'
+  | 'shield'
+  | 'shieldCheck'
+  | 'shoppingBag'
+  | 'signal'
+  | 'truck'
+  | 'users'
+  | 'workflow';
+
+const iconMap: Record<TopicIconKey, React.ElementType> = {
+  bot: Bot,
+  brain: Brain,
+  building2: Building2,
+  cloud: Cloud,
+  cog: Cog,
+  contact: Contact,
+  database: Database,
+  factory: Factory,
+  fileText: FileText,
+  fuel: Fuel,
+  graduationCap: GraduationCap,
+  heartPulse: HeartPulse,
+  landmark: Landmark,
+  layers: Layers,
+  layoutGrid: LayoutGrid,
+  messageSquare: MessageSquare,
+  plane: Plane,
+  search: Search,
+  shield: Shield,
+  shieldCheck: ShieldCheck,
+  shoppingBag: ShoppingBag,
+  signal: Signal,
+  truck: Truck,
+  users: Users,
+  workflow: Workflow
+};
 
 type TopicCardProps = {
   title: string;
   description: string;
-  icon: React.ElementType;
+  iconKey: TopicIconKey;
   accent?: 'blue' | 'indigo' | 'emerald' | 'cyan';
   imageSrc?: string;
   imageAlt?: string;
@@ -20,9 +102,10 @@ const accents: Record<NonNullable<TopicCardProps['accent']>, { from: string; via
   cyan: { from: 'from-cyan-500/22', via: 'via-blue-500/10', to: 'to-transparent' }
 };
 
-export function TopicCard({ title, description, icon: Icon, accent = 'blue', imageSrc, imageAlt }: TopicCardProps) {
+export function TopicCard({ title, description, iconKey, accent = 'blue', imageSrc, imageAlt }: TopicCardProps) {
   const reduceMotion = useReducedMotion();
   const gradient = accents[accent];
+  const Icon = iconMap[iconKey];
 
   return (
     <motion.div
