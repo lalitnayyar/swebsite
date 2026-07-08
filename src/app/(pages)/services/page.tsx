@@ -25,7 +25,7 @@ const serviceImageByTopic: Record<string, string> = {
   'Cloud Consulting':
     'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=70',
   'Infrastructure Modernization':
-    'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1600&q=70',
+    'https://images.unsplash.com/photo-1551703599-8e0f0b0a4b0a?auto=format&fit=crop&w=1600&q=70',
   'API Development':
     'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1600&q=70',
   Automation:
@@ -35,7 +35,7 @@ const serviceImageByTopic: Record<string, string> = {
   'Platform Engineering':
     'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=70',
   'System Integration':
-    'https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=70',
+    'https://images.unsplash.com/photo-1554224154-26032ffc0d07?auto=format&fit=crop&w=1600&q=70',
   'Contact Center Consulting':
     'https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?auto=format&fit=crop&w=1600&q=70',
   'Avaya Consulting':
@@ -51,17 +51,17 @@ const serviceImageByTopic: Record<string, string> = {
   Training:
     'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1600&q=70',
   'Managed Services':
-    'https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1600&q=70',
+    'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=70',
   Support:
     'https://images.unsplash.com/photo-1580894894513-541e068a3a67?auto=format&fit=crop&w=1600&q=70',
   'Health Checks':
     'https://images.unsplash.com/photo-1556761175-129418cb2dfe?auto=format&fit=crop&w=1600&q=70',
   'Performance Optimization':
-    'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=70',
+    'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1600&q=70',
   'Migration Services':
-    'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=70',
+    'https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=70',
   'Architecture Review':
-    'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1600&q=70'
+    'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=70'
 };
 
 const fallbackServiceImage =

@@ -15,7 +15,7 @@ const industryImageByTopic: Record<string, string> = {
   Insurance:
     'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=1600&q=70',
   Retail:
-    'https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1600&q=70',
+    'https://images.unsplash.com/photo-1521337706264-a414f153a5f5?auto=format&fit=crop&w=1600&q=70',
   Manufacturing:
     'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1600&q=70',
   Education:
@@ -27,7 +27,7 @@ const industryImageByTopic: Record<string, string> = {
   Transportation:
     'https://images.unsplash.com/photo-1587293852726-70cdb56c2866?auto=format&fit=crop&w=1600&q=70',
   'Public Sector':
-    'https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop&w=1600&q=70'
+    'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1600&q=70'
 };
 
 const fallbackIndustryImage =
