@@ -3,11 +3,10 @@
 import * as React from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 
-type RevealProps = {
-  children: React.ReactNode;
+type RevealProps = React.PropsWithChildren<{
   className?: string;
   delay?: number;
-};
+}>;
 
 export function Reveal({ children, className, delay = 0 }: RevealProps) {
   const reduceMotion = useReducedMotion();

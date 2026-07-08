@@ -3,7 +3,24 @@ import { SiteFooter } from '@/components/layout/site-footer';
 import { Reveal } from '@/components/motion/reveal';
 import { TopicCard } from '@/components/marketing/topic-card';
 
-const industryImageByTopic: Record<string, string> = {
+const industries = [
+  'Telecommunications',
+  'Government',
+  'Healthcare',
+  'Banking',
+  'Insurance',
+  'Retail',
+  'Manufacturing',
+  'Education',
+  'Energy',
+  'Airlines',
+  'Transportation',
+  'Public Sector'
+] as const;
+
+type Industry = (typeof industries)[number];
+
+const industryImageByTopic: Record<Industry, string> = {
   Telecommunications:
     'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=70',
   Government:
@@ -29,24 +46,6 @@ const industryImageByTopic: Record<string, string> = {
   'Public Sector':
     'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1600&q=70'
 };
-
-const fallbackIndustryImage =
-  'https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=70';
-
-const industries = [
-  'Telecommunications',
-  'Government',
-  'Healthcare',
-  'Banking',
-  'Insurance',
-  'Retail',
-  'Manufacturing',
-  'Education',
-  'Energy',
-  'Airlines',
-  'Transportation',
-  'Public Sector'
-];
 
 const industryMeta: Record<string, { iconKey: string; accent: 'blue' | 'indigo' | 'emerald' | 'cyan' }> = {
   Telecommunications: { iconKey: 'signal', accent: 'cyan' },
@@ -83,7 +82,7 @@ export default function IndustriesPage() {
                   description="Engagement approach tailored to operational constraints and regulatory environment."
                   iconKey={((industryMeta[i]?.iconKey ?? 'users') as any)}
                   accent={industryMeta[i]?.accent ?? 'blue'}
-                  imageSrc={industryImageByTopic[i] ?? fallbackIndustryImage}
+                  imageSrc={industryImageByTopic[i]}
                 />
               </Reveal>
             ))}
