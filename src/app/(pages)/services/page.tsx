@@ -1,16 +1,71 @@
-import * as React from 'react';
-
 import { SiteHeader } from '@/components/layout/site-header';
 import { SiteFooter } from '@/components/layout/site-footer';
 import { Reveal } from '@/components/motion/reveal';
 import { TopicCard } from '@/components/marketing/topic-card';
 
-const serviceImages = [
-  'https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=1600&q=70',
-  'https://images.unsplash.com/photo-1526378722484-bd91ca387e72?auto=format&fit=crop&w=1600&q=70',
-  'https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=70',
-  'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=70'
-];
+const serviceImageByTopic: Record<string, string> = {
+  'Enterprise AI Consulting':
+    'https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=1600&q=70',
+  'Generative AI':
+    'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1600&q=70',
+  'Agentic AI':
+    'https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1600&q=70',
+  'LLM Development':
+    'https://images.unsplash.com/photo-1526378722484-bd91ca387e72?auto=format&fit=crop&w=1600&q=70',
+  'AI Governance':
+    'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1600&q=70',
+  'Digital Transformation':
+    'https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1600&q=70',
+  'Enterprise Architecture':
+    'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1600&q=70',
+  'Solution Architecture':
+    'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=70',
+  'Technical Consulting':
+    'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1600&q=70',
+  'Cloud Consulting':
+    'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=70',
+  'Infrastructure Modernization':
+    'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1600&q=70',
+  'API Development':
+    'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1600&q=70',
+  Automation:
+    'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1600&q=70',
+  DevOps:
+    'https://images.unsplash.com/photo-1556075798-4825dfaaf498?auto=format&fit=crop&w=1600&q=70',
+  'Platform Engineering':
+    'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=70',
+  'System Integration':
+    'https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=70',
+  'Contact Center Consulting':
+    'https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?auto=format&fit=crop&w=1600&q=70',
+  'Avaya Consulting':
+    'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1600&q=70',
+  'Genesys Consulting':
+    'https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=1600&q=70',
+  'Cisco Contact Center':
+    'https://images.unsplash.com/photo-1556155092-490a1ba16284?auto=format&fit=crop&w=1600&q=70',
+  'Microsoft Copilot Consulting':
+    'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1600&q=70',
+  'AI Readiness Assessment':
+    'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1600&q=70',
+  Training:
+    'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1600&q=70',
+  'Managed Services':
+    'https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1600&q=70',
+  Support:
+    'https://images.unsplash.com/photo-1580894894513-541e068a3a67?auto=format&fit=crop&w=1600&q=70',
+  'Health Checks':
+    'https://images.unsplash.com/photo-1556761175-129418cb2dfe?auto=format&fit=crop&w=1600&q=70',
+  'Performance Optimization':
+    'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=70',
+  'Migration Services':
+    'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=70',
+  'Architecture Review':
+    'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1600&q=70'
+};
+
+const fallbackServiceImage =
+  'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1600&q=70';
 
 const services = [
   'Enterprise AI Consulting',
@@ -69,14 +124,14 @@ export default function ServicesPage() {
             </p>
           </div>
           <div className="grid gap-4 md:grid-cols-2">
-            {services.map((s, idx) => (
+            {services.map((s) => (
               <Reveal key={s}>
                 <TopicCard
                   title={s}
                   description="Structured consulting engagement with architecture, implementation, and operational guidance."
                   iconKey={((serviceMeta[s]?.iconKey ?? 'layers') as any)}
                   accent={serviceMeta[s]?.accent ?? 'blue'}
-                  imageSrc={serviceImages[idx % serviceImages.length]}
+                  imageSrc={serviceImageByTopic[s] ?? fallbackServiceImage}
                 />
               </Reveal>
             ))}
