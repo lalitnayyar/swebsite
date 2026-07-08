@@ -31,47 +31,47 @@ type Solution = (typeof solutions)[number];
 
 const solutionImageByTopic: Record<Solution, string> = {
   'Enterprise AI Assistant':
-    'https://images.unsplash.com/photo-1525182008055-f88b95ff7980?auto=format&fit=crop&w=1600&q=70',
+    'https://source.unsplash.com/1600x900/?virtual-assistant,office&sig=101',
   'Knowledge Management':
-    'https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1600&q=70',
+    'https://source.unsplash.com/1600x900/?knowledge-base,documents&sig=102',
   'Customer Support AI':
-    'https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?auto=format&fit=crop&w=1600&q=70',
+    'https://source.unsplash.com/1600x900/?customer-support,helpdesk&sig=103',
   'Call Center AI':
-    'https://images.unsplash.com/photo-1556155092-490a1ba16284?auto=format&fit=crop&w=1600&q=70',
+    'https://source.unsplash.com/1600x900/?call-center,headset&sig=104',
   'Speech Analytics':
-    'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=1600&q=70',
+    'https://source.unsplash.com/1600x900/?audio-waveform,analytics&sig=105',
   Chatbots:
-    'https://images.unsplash.com/photo-1512428559087-560fa5ceab42?auto=format&fit=crop&w=1600&q=70',
+    'https://source.unsplash.com/1600x900/?chat,ui,messaging&sig=106',
   'Voice Bots':
-    'https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=1600&q=70',
+    'https://source.unsplash.com/1600x900/?microphone,headset,voice&sig=107',
   'Document Intelligence':
-    'https://images.unsplash.com/photo-1526378722484-bd91ca387e72?auto=format&fit=crop&w=1600&q=70',
+    'https://source.unsplash.com/1600x900/?document,scanner,ocr&sig=108',
   'RAG Systems':
-    'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=70',
+    'https://source.unsplash.com/1600x900/?search,documents,ai&sig=109',
   'Multi Agent Systems':
-    'https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1600&q=70',
+    'https://source.unsplash.com/1600x900/?workflow,automation,team&sig=110',
   'Workflow Automation':
-    'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1600&q=70',
+    'https://source.unsplash.com/1600x900/?process,workflow,automation&sig=111',
   'Approval Automation':
-    'https://images.unsplash.com/photo-1554224154-26032ffc0d07?auto=format&fit=crop&w=1600&q=70',
+    'https://source.unsplash.com/1600x900/?approval,signature,document&sig=112',
   'Reporting Platform':
-    'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=70',
+    'https://source.unsplash.com/1600x900/?reporting,dashboard,charts&sig=113',
   'AI Dashboards':
-    'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=70',
+    'https://source.unsplash.com/1600x900/?analytics,dashboard,metrics&sig=114',
   'Incident Management':
-    'https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=70',
+    'https://source.unsplash.com/1600x900/?incident,response,operations&sig=115',
   'Ticket Automation':
-    'https://images.unsplash.com/photo-1556761175-129418cb2dfe?auto=format&fit=crop&w=1600&q=70',
+    'https://source.unsplash.com/1600x900/?ticketing,helpdesk,software&sig=116',
   'Monitoring Platform':
-    'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1600&q=70',
+    'https://source.unsplash.com/1600x900/?monitoring,observability,server&sig=117',
   'Enterprise Search':
-    'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=70',
+    'https://source.unsplash.com/1600x900/?enterprise-search,query&sig=118',
   'Developer Portal':
-    'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1600&q=70',
+    'https://source.unsplash.com/1600x900/?developer,portal,code&sig=119',
   'Internal Portals':
-    'https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1600&q=70',
+    'https://source.unsplash.com/1600x900/?intranet,office,portal&sig=120',
   'Custom Software Development':
-    'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1600&q=70'
+    'https://source.unsplash.com/1600x900/?software-development,programming&sig=121'
 };
 
 const solutionMeta: Record<string, { iconKey: string; accent: 'blue' | 'indigo' | 'emerald' | 'cyan' }> = {

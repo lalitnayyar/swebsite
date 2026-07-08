@@ -22,29 +22,29 @@ type Industry = (typeof industries)[number];
 
 const industryImageByTopic: Record<Industry, string> = {
   Telecommunications:
-    'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=1600&q=70',
+    'https://source.unsplash.com/1600x900/?telecommunications,cell-tower&sig=301',
   Government:
-    'https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop&w=1600&q=70',
+    'https://source.unsplash.com/1600x900/?government,capitol,building&sig=302',
   Healthcare:
-    'https://images.unsplash.com/photo-1576765607924-3f7b8410a787?auto=format&fit=crop&w=1600&q=70',
+    'https://source.unsplash.com/1600x900/?hospital,doctor,healthcare&sig=303',
   Banking:
-    'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=70',
+    'https://source.unsplash.com/1600x900/?bank,finance,building&sig=304',
   Insurance:
-    'https://images.unsplash.com/photo-1605902711622-cfb43c44367f?auto=format&fit=crop&w=1600&q=70',
+    'https://source.unsplash.com/1600x900/?insurance,policy,documents&sig=305',
   Retail:
-    'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1600&q=70',
+    'https://source.unsplash.com/1600x900/?retail,store,shopping&sig=306',
   Manufacturing:
-    'https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=1600&q=70',
+    'https://source.unsplash.com/1600x900/?manufacturing,factory,industry&sig=307',
   Education:
-    'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1600&q=70',
+    'https://source.unsplash.com/1600x900/?education,classroom,students&sig=308',
   Energy:
-    'https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1600&q=70',
+    'https://source.unsplash.com/1600x900/?energy,power-grid,renewable&sig=309',
   Airlines:
-    'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1600&q=70',
+    'https://source.unsplash.com/1600x900/?airplane,aircraft,airport&sig=310',
   Transportation:
-    'https://images.unsplash.com/photo-1587293852726-70cdb56c2866?auto=format&fit=crop&w=1600&q=70',
+    'https://source.unsplash.com/1600x900/?transportation,logistics,truck&sig=311',
   'Public Sector':
-    'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1600&q=70'
+    'https://source.unsplash.com/1600x900/?public-sector,civic,community&sig=312'
 };
 
 const industryMeta: Record<string, { iconKey: string; accent: 'blue' | 'indigo' | 'emerald' | 'cyan' }> = {
