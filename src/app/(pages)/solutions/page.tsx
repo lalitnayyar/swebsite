@@ -3,7 +3,33 @@ import { SiteFooter } from '@/components/layout/site-footer';
 import { Reveal } from '@/components/motion/reveal';
 import { TopicCard } from '@/components/marketing/topic-card';
 
-const solutionImageByTopic: Record<string, string> = {
+const solutions = [
+  'Enterprise AI Assistant',
+  'Knowledge Management',
+  'Customer Support AI',
+  'Call Center AI',
+  'Speech Analytics',
+  'Chatbots',
+  'Voice Bots',
+  'Document Intelligence',
+  'RAG Systems',
+  'Multi Agent Systems',
+  'Workflow Automation',
+  'Approval Automation',
+  'Reporting Platform',
+  'AI Dashboards',
+  'Incident Management',
+  'Ticket Automation',
+  'Monitoring Platform',
+  'Enterprise Search',
+  'Developer Portal',
+  'Internal Portals',
+  'Custom Software Development'
+] as const;
+
+type Solution = (typeof solutions)[number];
+
+const solutionImageByTopic: Record<Solution, string> = {
   'Enterprise AI Assistant':
     'https://images.unsplash.com/photo-1525182008055-f88b95ff7980?auto=format&fit=crop&w=1600&q=70',
   'Knowledge Management':
@@ -48,33 +74,6 @@ const solutionImageByTopic: Record<string, string> = {
     'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1600&q=70'
 };
 
-const fallbackSolutionImage =
-  'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=70';
-
-const solutions = [
-  'Enterprise AI Assistant',
-  'Knowledge Management',
-  'Customer Support AI',
-  'Call Center AI',
-  'Speech Analytics',
-  'Chatbots',
-  'Voice Bots',
-  'Document Intelligence',
-  'RAG Systems',
-  'Multi Agent Systems',
-  'Workflow Automation',
-  'Approval Automation',
-  'Reporting Platform',
-  'AI Dashboards',
-  'Incident Management',
-  'Ticket Automation',
-  'Monitoring Platform',
-  'Enterprise Search',
-  'Developer Portal',
-  'Internal Portals',
-  'Custom Software Development'
-];
-
 const solutionMeta: Record<string, { iconKey: string; accent: 'blue' | 'indigo' | 'emerald' | 'cyan' }> = {
   'Enterprise AI Assistant': { iconKey: 'bot', accent: 'indigo' },
   'Knowledge Management': { iconKey: 'database', accent: 'blue' },
@@ -114,7 +113,7 @@ export default function SolutionsPage() {
                   description="Architecture-led implementation with governance, observability, and operational readiness."
                   iconKey={((solutionMeta[s]?.iconKey ?? 'layoutGrid') as any)}
                   accent={solutionMeta[s]?.accent ?? 'blue'}
-                  imageSrc={solutionImageByTopic[s] ?? fallbackSolutionImage}
+                  imageSrc={solutionImageByTopic[s]}
                 />
               </Reveal>
             ))}

@@ -32,7 +32,7 @@ const industryImageByTopic: Record<Industry, string> = {
   Insurance:
     'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=1600&q=70',
   Retail:
-    'https://images.unsplash.com/photo-1521337706264-a414f153a5f5?auto=format&fit=crop&w=1600&q=70',
+    'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1600&q=70',
   Manufacturing:
     'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1600&q=70',
   Education:

@@ -3,7 +3,41 @@ import { SiteFooter } from '@/components/layout/site-footer';
 import { Reveal } from '@/components/motion/reveal';
 import { TopicCard } from '@/components/marketing/topic-card';
 
-const serviceImageByTopic: Record<string, string> = {
+const services = [
+  'Enterprise AI Consulting',
+  'Generative AI',
+  'Agentic AI',
+  'LLM Development',
+  'AI Governance',
+  'Digital Transformation',
+  'Enterprise Architecture',
+  'Solution Architecture',
+  'Technical Consulting',
+  'Cloud Consulting',
+  'Infrastructure Modernization',
+  'API Development',
+  'Automation',
+  'DevOps',
+  'Platform Engineering',
+  'System Integration',
+  'Contact Center Consulting',
+  'Avaya Consulting',
+  'Genesys Consulting',
+  'Cisco Contact Center',
+  'Microsoft Copilot Consulting',
+  'AI Readiness Assessment',
+  'Training',
+  'Managed Services',
+  'Support',
+  'Health Checks',
+  'Performance Optimization',
+  'Migration Services',
+  'Architecture Review'
+] as const;
+
+type Service = (typeof services)[number];
+
+const serviceImageByTopic: Record<Service, string> = {
   'Enterprise AI Consulting':
     'https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=1600&q=70',
   'Generative AI':
@@ -25,7 +59,7 @@ const serviceImageByTopic: Record<string, string> = {
   'Cloud Consulting':
     'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=70',
   'Infrastructure Modernization':
-    'https://images.unsplash.com/photo-1551703599-8e0f0b0a4b0a?auto=format&fit=crop&w=1600&q=70',
+    'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1600&q=70',
   'API Development':
     'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1600&q=70',
   Automation:
@@ -64,41 +98,6 @@ const serviceImageByTopic: Record<string, string> = {
     'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=70'
 };
 
-const fallbackServiceImage =
-  'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1600&q=70';
-
-const services = [
-  'Enterprise AI Consulting',
-  'Generative AI',
-  'Agentic AI',
-  'LLM Development',
-  'AI Governance',
-  'Digital Transformation',
-  'Enterprise Architecture',
-  'Solution Architecture',
-  'Technical Consulting',
-  'Cloud Consulting',
-  'Infrastructure Modernization',
-  'API Development',
-  'Automation',
-  'DevOps',
-  'Platform Engineering',
-  'System Integration',
-  'Contact Center Consulting',
-  'Avaya Consulting',
-  'Genesys Consulting',
-  'Cisco Contact Center',
-  'Microsoft Copilot Consulting',
-  'AI Readiness Assessment',
-  'Training',
-  'Managed Services',
-  'Support',
-  'Health Checks',
-  'Performance Optimization',
-  'Migration Services',
-  'Architecture Review'
-];
-
 const serviceMeta: Record<string, { iconKey: string; accent: 'blue' | 'indigo' | 'emerald' | 'cyan' }> = {
   'Enterprise AI Consulting': { iconKey: 'brain', accent: 'blue' },
   'Generative AI': { iconKey: 'bot', accent: 'indigo' },
@@ -131,7 +130,7 @@ export default function ServicesPage() {
                   description="Structured consulting engagement with architecture, implementation, and operational guidance."
                   iconKey={((serviceMeta[s]?.iconKey ?? 'layers') as any)}
                   accent={serviceMeta[s]?.accent ?? 'blue'}
-                  imageSrc={serviceImageByTopic[s] ?? fallbackServiceImage}
+                  imageSrc={serviceImageByTopic[s]}
                 />
               </Reveal>
             ))}
