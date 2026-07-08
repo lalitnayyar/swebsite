@@ -22,29 +22,29 @@ type Industry = (typeof industries)[number];
 
 const industryImageByTopic: Record<Industry, string> = {
   Telecommunications:
-    'https://source.unsplash.com/1600x900/?telecommunications,cell-tower&sig=301',
+    '/site-images/industries/telecommunications.webp',
   Government:
-    'https://source.unsplash.com/1600x900/?government,capitol,building&sig=302',
+    '/site-images/industries/government.webp',
   Healthcare:
-    'https://source.unsplash.com/1600x900/?hospital,doctor,healthcare&sig=303',
+    '/site-images/industries/healthcare.webp',
   Banking:
-    'https://source.unsplash.com/1600x900/?bank,finance,building&sig=304',
+    '/site-images/industries/banking.webp',
   Insurance:
-    'https://source.unsplash.com/1600x900/?insurance,policy,documents&sig=305',
+    '/site-images/industries/insurance.webp',
   Retail:
-    'https://source.unsplash.com/1600x900/?retail,store,shopping&sig=306',
+    '/site-images/industries/retail.webp',
   Manufacturing:
-    'https://source.unsplash.com/1600x900/?manufacturing,factory,industry&sig=307',
+    '/site-images/industries/manufacturing.webp',
   Education:
-    'https://source.unsplash.com/1600x900/?education,classroom,students&sig=308',
+    '/site-images/industries/education.webp',
   Energy:
-    'https://source.unsplash.com/1600x900/?energy,power-grid,renewable&sig=309',
+    '/site-images/industries/energy.webp',
   Airlines:
-    'https://source.unsplash.com/1600x900/?airplane,aircraft,airport&sig=310',
+    '/site-images/industries/airlines.webp',
   Transportation:
-    'https://source.unsplash.com/1600x900/?transportation,logistics,truck&sig=311',
+    '/site-images/industries/transportation.webp',
   'Public Sector':
-    'https://source.unsplash.com/1600x900/?public-sector,civic,community&sig=312'
+    '/site-images/industries/public-sector.webp'
 };
 
 const industryMeta: Record<string, { iconKey: string; accent: 'blue' | 'indigo' | 'emerald' | 'cyan' }> = {

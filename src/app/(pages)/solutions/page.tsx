@@ -31,47 +31,47 @@ type Solution = (typeof solutions)[number];
 
 const solutionImageByTopic: Record<Solution, string> = {
   'Enterprise AI Assistant':
-    'https://source.unsplash.com/1600x900/?virtual-assistant,office&sig=101',
+    '/site-images/solutions/enterprise-ai-assistant.webp',
   'Knowledge Management':
-    'https://source.unsplash.com/1600x900/?knowledge-base,documents&sig=102',
+    '/site-images/solutions/knowledge-management.webp',
   'Customer Support AI':
-    'https://source.unsplash.com/1600x900/?customer-support,helpdesk&sig=103',
+    '/site-images/solutions/customer-support-ai.webp',
   'Call Center AI':
-    'https://source.unsplash.com/1600x900/?call-center,headset&sig=104',
+    '/site-images/solutions/call-center-ai.webp',
   'Speech Analytics':
-    'https://source.unsplash.com/1600x900/?audio-waveform,analytics&sig=105',
+    '/site-images/solutions/speech-analytics.webp',
   Chatbots:
-    'https://source.unsplash.com/1600x900/?chat,ui,messaging&sig=106',
+    '/site-images/solutions/chatbots.webp',
   'Voice Bots':
-    'https://source.unsplash.com/1600x900/?microphone,headset,voice&sig=107',
+    '/site-images/solutions/voice-bots.webp',
   'Document Intelligence':
-    'https://source.unsplash.com/1600x900/?document,scanner,ocr&sig=108',
+    '/site-images/solutions/document-intelligence.webp',
   'RAG Systems':
-    'https://source.unsplash.com/1600x900/?search,documents,ai&sig=109',
+    '/site-images/solutions/rag-systems.webp',
   'Multi Agent Systems':
-    'https://source.unsplash.com/1600x900/?workflow,automation,team&sig=110',
+    '/site-images/solutions/multi-agent-systems.webp',
   'Workflow Automation':
-    'https://source.unsplash.com/1600x900/?process,workflow,automation&sig=111',
+    '/site-images/solutions/workflow-automation.webp',
   'Approval Automation':
-    'https://source.unsplash.com/1600x900/?approval,signature,document&sig=112',
+    '/site-images/solutions/approval-automation.webp',
   'Reporting Platform':
-    'https://source.unsplash.com/1600x900/?reporting,dashboard,charts&sig=113',
+    '/site-images/solutions/reporting-platform.webp',
   'AI Dashboards':
-    'https://source.unsplash.com/1600x900/?analytics,dashboard,metrics&sig=114',
+    '/site-images/solutions/ai-dashboards.webp',
   'Incident Management':
-    'https://source.unsplash.com/1600x900/?incident,response,operations&sig=115',
+    '/site-images/solutions/incident-management.webp',
   'Ticket Automation':
-    'https://source.unsplash.com/1600x900/?ticketing,helpdesk,software&sig=116',
+    '/site-images/solutions/ticket-automation.webp',
   'Monitoring Platform':
-    'https://source.unsplash.com/1600x900/?monitoring,observability,server&sig=117',
+    '/site-images/solutions/monitoring-platform.webp',
   'Enterprise Search':
-    'https://source.unsplash.com/1600x900/?enterprise-search,query&sig=118',
+    '/site-images/solutions/enterprise-search.webp',
   'Developer Portal':
-    'https://source.unsplash.com/1600x900/?developer,portal,code&sig=119',
+    '/site-images/solutions/developer-portal.webp',
   'Internal Portals':
-    'https://source.unsplash.com/1600x900/?intranet,office,portal&sig=120',
+    '/site-images/solutions/internal-portals.webp',
   'Custom Software Development':
-    'https://source.unsplash.com/1600x900/?software-development,programming&sig=121'
+    '/site-images/solutions/custom-software-development.webp'
 };
 
 const solutionMeta: Record<string, { iconKey: string; accent: 'blue' | 'indigo' | 'emerald' | 'cyan' }> = {

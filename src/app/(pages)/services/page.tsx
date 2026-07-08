@@ -39,63 +39,63 @@ type Service = (typeof services)[number];
 
 const serviceImageByTopic: Record<Service, string> = {
   'Enterprise AI Consulting':
-    'https://source.unsplash.com/1600x900/?ai-consulting,meeting&sig=201',
+    '/site-images/services/enterprise-ai-consulting.webp',
   'Generative AI':
-    'https://source.unsplash.com/1600x900/?generative-ai,technology&sig=202',
+    '/site-images/services/generative-ai.webp',
   'Agentic AI':
-    'https://source.unsplash.com/1600x900/?autonomous,workflow,automation&sig=203',
+    '/site-images/services/agentic-ai.webp',
   'LLM Development':
-    'https://source.unsplash.com/1600x900/?software-engineering,code&sig=204',
+    '/site-images/services/llm-development.webp',
   'AI Governance':
-    'https://source.unsplash.com/1600x900/?governance,compliance,security&sig=205',
+    '/site-images/services/ai-governance.webp',
   'Digital Transformation':
-    'https://source.unsplash.com/1600x900/?digital-transformation,business&sig=206',
+    '/site-images/services/digital-transformation.webp',
   'Enterprise Architecture':
-    'https://source.unsplash.com/1600x900/?enterprise-architecture,blueprint&sig=207',
+    '/site-images/services/enterprise-architecture.webp',
   'Solution Architecture':
-    'https://source.unsplash.com/1600x900/?architecture,diagram,design&sig=208',
+    '/site-images/services/solution-architecture.webp',
   'Technical Consulting':
-    'https://source.unsplash.com/1600x900/?technical-consulting,workshop&sig=209',
+    '/site-images/services/technical-consulting.webp',
   'Cloud Consulting':
-    'https://source.unsplash.com/1600x900/?cloud,datacenter&sig=210',
+    '/site-images/services/cloud-consulting.webp',
   'Infrastructure Modernization':
-    'https://source.unsplash.com/1600x900/?server,datacenter,rack&sig=211',
+    '/site-images/services/infrastructure-modernization.webp',
   'API Development':
-    'https://source.unsplash.com/1600x900/?api,code,backend&sig=212',
+    '/site-images/services/api-development.webp',
   Automation:
-    'https://source.unsplash.com/1600x900/?automation,robotic-process&sig=213',
+    '/site-images/services/automation.webp',
   DevOps:
-    'https://source.unsplash.com/1600x900/?devops,ci-cd,pipeline&sig=214',
+    '/site-images/services/devops.webp',
   'Platform Engineering':
-    'https://source.unsplash.com/1600x900/?platform-engineering,kubernetes&sig=215',
+    '/site-images/services/platform-engineering.webp',
   'System Integration':
-    'https://source.unsplash.com/1600x900/?system-integration,enterprise&sig=216',
+    '/site-images/services/system-integration.webp',
   'Contact Center Consulting':
-    'https://source.unsplash.com/1600x900/?contact-center,customer-service&sig=217',
+    '/site-images/services/contact-center-consulting.webp',
   'Avaya Consulting':
-    'https://source.unsplash.com/1600x900/?telephony,call-center&sig=218',
+    '/site-images/services/avaya-consulting.webp',
   'Genesys Consulting':
-    'https://source.unsplash.com/1600x900/?customer-experience,call-center&sig=219',
+    '/site-images/services/genesys-consulting.webp',
   'Cisco Contact Center':
-    'https://source.unsplash.com/1600x900/?call-center,workstation&sig=220',
+    '/site-images/services/cisco-contact-center.webp',
   'Microsoft Copilot Consulting':
-    'https://source.unsplash.com/1600x900/?microsoft,productivity,office&sig=221',
+    '/site-images/services/microsoft-copilot-consulting.webp',
   'AI Readiness Assessment':
-    'https://source.unsplash.com/1600x900/?assessment,checklist,technology&sig=222',
+    '/site-images/services/ai-readiness-assessment.webp',
   Training:
-    'https://source.unsplash.com/1600x900/?training,workshop,classroom&sig=223',
+    '/site-images/services/training.webp',
   'Managed Services':
-    'https://source.unsplash.com/1600x900/?managed-services,it-operations&sig=224',
+    '/site-images/services/managed-services.webp',
   Support:
-    'https://source.unsplash.com/1600x900/?it-support,helpdesk&sig=225',
+    '/site-images/services/support.webp',
   'Health Checks':
-    'https://source.unsplash.com/1600x900/?health-check,monitoring,system&sig=226',
+    '/site-images/services/health-checks.webp',
   'Performance Optimization':
-    'https://source.unsplash.com/1600x900/?performance,optimization,speed&sig=227',
+    '/site-images/services/performance-optimization.webp',
   'Migration Services':
-    'https://source.unsplash.com/1600x900/?migration,cloud,transfer&sig=228',
+    '/site-images/services/migration-services.webp',
   'Architecture Review':
-    'https://source.unsplash.com/1600x900/?architecture-review,audit,planning&sig=229'
+    '/site-images/services/architecture-review.webp'
 };
 
 const serviceMeta: Record<string, { iconKey: string; accent: 'blue' | 'indigo' | 'emerald' | 'cyan' }> = {

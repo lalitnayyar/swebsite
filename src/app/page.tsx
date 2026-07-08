@@ -61,7 +61,7 @@ export default function HomePage() {
               <Reveal className="relative" delay={0.08}>
                 <div className="absolute -inset-10 rounded-[28px] bg-[linear-gradient(135deg,rgba(37,99,235,0.22),rgba(99,102,241,0.10),rgba(255,255,255,0.0))] blur-2xl" />
                 <HeroVisual
-                  imageSrc="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1600&q=80"
+                  imageSrc="/site-images/home/hero-consulting.webp"
                   imageAlt="Consulting team collaborating"
                 />
               </Reveal>
