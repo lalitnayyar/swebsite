@@ -24,8 +24,7 @@ async function generatePng(prompt) {
   const payload = {
     model: process.env.OPENAI_IMAGE_MODEL ?? 'gpt-image-1',
     prompt,
-    size: '1792x1024',
-    response_format: 'b64_json'
+    size: '1536x1024'
   };
 
   const r = await fetch('https://api.openai.com/v1/images/generations', {
@@ -43,12 +42,24 @@ async function generatePng(prompt) {
   }
 
   const json = await r.json();
-  const b64 = json?.data?.[0]?.b64_json;
-  if (!b64) {
-    throw new Error('OpenAI image generation returned no data');
+
+  const first = json?.data?.[0];
+  const b64 = first?.b64_json ?? first?.b64;
+  if (b64) {
+    return Buffer.from(b64, 'base64');
   }
 
-  return Buffer.from(b64, 'base64');
+  const url = first?.url;
+  if (url) {
+    const img = await fetch(url);
+    if (!img.ok) {
+      const text = await img.text();
+      throw new Error(`OpenAI image download failed: ${img.status} ${text}`);
+    }
+    return Buffer.from(await img.arrayBuffer());
+  }
+
+  throw new Error('OpenAI image generation returned no image data');
 }
 
 /**
